@@ -16,6 +16,7 @@ knitr::opts_chunk$set(
 # packagedapis
 
 <!-- badges: start -->
+[![Travis build status](https://travis-ci.com/edgararuiz/packagedapis.svg?branch=master)](https://travis-ci.com/edgararuiz/packagedapis)
 <!-- badges: end -->
 
 This package explores how the mechanics of testing would work to using the R package structure to create and test APIs by moving functions to the R folder, and the actual API to the `inst` folder.

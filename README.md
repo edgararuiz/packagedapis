@@ -4,6 +4,9 @@
 # packagedapis
 
 <!-- badges: start -->
+
+[![Travis build
+status](https://travis-ci.com/edgararuiz/packagedapis.svg?branch=master)](https://travis-ci.com/edgararuiz/packagedapis)
 <!-- badges: end -->
 
 This package explores how the mechanics of testing would work to using
