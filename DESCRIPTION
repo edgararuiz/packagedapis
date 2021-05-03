@@ -1,5 +1,5 @@
 Package: packagedapis
-Title: What the Package Does (One Line, Title Case)
+Title: A concept prototype to manage APIs as packages
 Version: 0.0.0.9000
 Authors@R: 
     person(given = "Edgar",
@@ -7,7 +7,9 @@ Authors@R:
            role = c("aut", "cre"),
            email = "edgar@rstudio.com"
            )
-Description: What the package does (one paragraph).
+Description: This package explores how the mechanics of testing would work to
+   using the R package structure to create and test APIs by moving functions
+   to the R folder, and the actual API to the inst folder.
 License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true
