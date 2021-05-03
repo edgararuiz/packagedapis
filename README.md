@@ -5,8 +5,7 @@
 
 <!-- badges: start -->
 
-[![Travis build
-status](https://travis-ci.com/edgararuiz/packagedapis.svg?branch=master)](https://travis-ci.com/edgararuiz/packagedapis)
+[![R-CMD-check](https://github.com/edgararuiz/packagedapis/workflows/R-CMD-check/badge.svg)](https://github.com/edgararuiz/packagedapis/actions)
 <!-- badges: end -->
 
 This package explores how the mechanics of testing would work to using
