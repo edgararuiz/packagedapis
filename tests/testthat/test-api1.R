@@ -12,9 +12,12 @@ run_api1 <- function() {
 # Starting the API outside of any test_that() function
 api_rs <- run_api1()
 
+# Running r_safe one time, it seems to fix refused connections
+resp_primer <- callr::r_safe(function() 1)
+
 # Testing the data endpoint using callr::r() to avoid
 # getting blocked by internal firewall
-resp_data <- callr::r(function() httr::GET("http://127.0.0.1:1212/data"))
+resp_data <- callr::r_safe(function() httr::GET("http://127.0.0.1:1212/data"))
 # Running a status test, and a expected value test for the results
 test_that("data endpoint works", {
   
@@ -33,7 +36,7 @@ test_that("data endpoint works", {
   
 })
 
-resp_model <- callr::r(function() httr::GET("http://127.0.0.1:1212/model"))
+resp_model <- callr::r_safe(function() httr::GET("http://127.0.0.1:1212/model"))
 
 test_that("model endpoint works", {
   
@@ -51,7 +54,7 @@ test_that("model endpoint works", {
 })
 
   
-resp_predict <- callr::r(function() httr::GET("http://127.0.0.1:1212/predict?weight=2"))
+resp_predict <- callr::r_safe(function() httr::GET("http://127.0.0.1:1212/predict?weight=2"))
 
 test_that("predict endpoint works", {
   
