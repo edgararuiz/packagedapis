@@ -4,7 +4,7 @@
 #' Returns the mtcars data set
 #' @export
 show_data <- function() {
-  datasets::mtcars
+  datasets::iris
 }
 
 #' Fits a linear regression model over mtcars
