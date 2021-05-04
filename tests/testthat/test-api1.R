@@ -1,8 +1,8 @@
 api_rs <- test_api_start()
 
+resp_data <- test_api_endpoint_GET("data", api_rs)
+
 test_that("data endpoint works", {
-  
-  resp_data <- test_api_endpoint_GET("data", api_rs)
   
   # Expect status is 200
   expect_equal(
@@ -19,9 +19,9 @@ test_that("data endpoint works", {
   
 })
 
+resp_model <- test_api_endpoint_GET("model", api_rs)
+
 test_that("model endpoint works", {
-  
-  resp_model <- test_api_endpoint_GET("model", api_rs)
   
   # Expect status is 200
   expect_equal(
@@ -36,9 +36,9 @@ test_that("model endpoint works", {
   )  
 })
 
+resp_predict <- test_api_endpoint_GET("predict", api_rs, list(weight = 2))
+
 test_that("predict endpoint works", {
-  
-  resp_predict <- test_api_endpoint_GET("predict", api_rs, list(weight = 2))
   
   # Expect status is 200
   expect_equal(
