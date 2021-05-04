@@ -1,25 +1,8 @@
-# Using callr to start a new R session that will run the API
-# Putting inside a function to make it easier to read and debug
-run_api1 <- function() {
-  rs <- callr::r_session$new()
-  rs$call(function() {
-    ar <- plumber::plumb(system.file("api1.R", package = "packagedapis"))
-    plumber::pr_run(ar, port = 1212, quiet = TRUE, docs = FALSE)
-  })
-  rs
-}
+api_rs <- test_api_start()
 
-# Starting the API outside of any test_that() function
-api_rs <- run_api1()
-
-# Running r_safe one time, it seems to fix refused connections
-resp_primer <- callr::r_safe(function() 1)
-
-# Testing the data endpoint using callr::r() to avoid
-# getting blocked by internal firewall
-resp_data <- callr::r_safe(function() httr::GET("http://127.0.0.1:1212/data"))
-# Running a status test, and a expected value test for the results
 test_that("data endpoint works", {
+  
+  resp_data <- test_api_endpoint_GET("data", api_rs)
   
   # Expect status is 200
   expect_equal(
@@ -36,9 +19,9 @@ test_that("data endpoint works", {
   
 })
 
-resp_model <- callr::r_safe(function() httr::GET("http://127.0.0.1:1212/model"))
-
 test_that("model endpoint works", {
+  
+  resp_model <- test_api_endpoint_GET("model", api_rs)
   
   # Expect status is 200
   expect_equal(
@@ -53,10 +36,9 @@ test_that("model endpoint works", {
   )  
 })
 
-  
-resp_predict <- callr::r_safe(function() httr::GET("http://127.0.0.1:1212/predict?weight=2"))
-
 test_that("predict endpoint works", {
+  
+  resp_predict <- test_api_endpoint_GET("predict", api_rs, list(weight = 2))
   
   # Expect status is 200
   expect_equal(
@@ -72,5 +54,5 @@ test_that("predict endpoint works", {
 })
 
 
-api_rs$close()
+test_api_stop(api_rs)
 
