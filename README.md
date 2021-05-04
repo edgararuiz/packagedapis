@@ -8,9 +8,11 @@
 [![R-CMD-check](https://github.com/edgararuiz/packagedapis/workflows/R-CMD-check/badge.svg)](https://github.com/edgararuiz/packagedapis/actions)
 <!-- badges: end -->
 
-This package explores how the mechanics of testing would work to using
-the R package structure to create and test APIs by moving functions to
-the R folder, and the actual API to the `inst` folder.
+This package explores the mechanics of managing APIs within an R
+package. The idea is to separate the functions and the API endpoint
+code. This will allow to also test the functions and the endpoints
+independently. The idea is for the R package test and checks will test
+the endpoints as part of the verification process.
 
 ## Please clone, don’t install
 
