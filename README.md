@@ -29,10 +29,11 @@ piece:
             Folder/File                                            Explanation
     --------------------------   -------------------------------------------------------------------------
     ├── R
-    │   └── common.R              Functions that the API actually executes. They need to be exported.
+    │   ├── common.R             Functions that the API actually executes. They need to be exported.
+    │   └── test-api-utils.R     Functions that enable the test of the actual API endpoints
     ├── inst
-    │   └── api1.R                The actual plumber API.  They call functions from this package.
+    │   └── api1.R               The actual plumber API.  They call functions from this package.
     └── tests
         ├── testthat
-        │   ├── test-api1.R       Runs API in a new R session, and performs the tests against running API
-        │   └── test-common.R     Tests functions in common.R script
+        │   ├── test-api1.R      Runs API in a new R session, and performs the tests against running API
+        │   └── test-common.R    Tests functions in common.R script
