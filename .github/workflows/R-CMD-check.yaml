@@ -63,6 +63,17 @@ jobs:
             eval sudo $cmd
           done < <(Rscript -e 'writeLines(remotes::system_requirements("ubuntu", "20.04"))')
 
+      - name: Install pak and query dependencies
+        run: |
+          install.packages("pak", repos = "https://r-lib.github.io/p/pak/dev/")
+          saveRDS(pak::pkg_deps_tree("local::.", dependencies = TRUE), ".github/r-depends.rds")
+        shell: Rscript {0}
+        
+      - name: Install devel versions
+        run: |
+          try(pak::pkg_install("edgararuiz/callthat"))
+        shell: Rscript {0}
+
       - name: Install dependencies
         run: |
           remotes::install_deps(dependencies = TRUE)
