@@ -1,6 +1,3 @@
-# @importFrom datasets mtcars
-# @importFrom stats lm predict
-
 #' Returns the mtcars data set
 #' @export
 show_data <- function() {

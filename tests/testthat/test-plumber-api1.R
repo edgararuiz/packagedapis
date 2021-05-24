@@ -1,6 +1,10 @@
-api_rs <- test_api_start()
+library(callthat)
 
-resp_data <- test_api_endpoint_GET("data", api_rs)
+api_rs <- call_that_plumber_start(
+  root_folder = system.file("plumber/api1", package = "packagedapis")
+  )
+
+resp_data <- call_that_api_get(api_rs, "data")
 
 test_that("data endpoint works", {
   
@@ -19,7 +23,7 @@ test_that("data endpoint works", {
   
 })
 
-resp_model <- test_api_endpoint_GET("model", api_rs)
+resp_model <- call_that_api_get(api_rs, "model")
 
 test_that("model endpoint works", {
   
@@ -36,7 +40,7 @@ test_that("model endpoint works", {
   )  
 })
 
-resp_predict <- test_api_endpoint_GET("predict", api_rs, list(weight = 2))
+resp_predict <- call_that_api_get(api_rs, "predict", list(weight = 2))
 
 test_that("predict endpoint works", {
   
@@ -54,5 +58,5 @@ test_that("predict endpoint works", {
 })
 
 
-test_api_stop(api_rs)
+call_that_plumber_stop(api_rs)
 
