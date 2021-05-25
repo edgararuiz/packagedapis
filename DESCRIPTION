@@ -1,6 +1,6 @@
 Package: packagedapis
 Title: A concept prototype to manage APIs as packages
-Version: 0.0.0.9002
+Version: 0.0.0.9005
 Authors@R: 
     person(given = "Edgar",
            family = "Ruiz",
