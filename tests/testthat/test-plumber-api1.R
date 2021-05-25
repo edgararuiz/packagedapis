@@ -1,7 +1,7 @@
 library(callthat)
 
 api_rs <- call_that_plumber_start(
-  root_folder = system.file("plumber/api1", package = "packagedapis")
+  api_folder = system.file("plumber/api1", package = "packagedapis")
   )
 
 resp_data <- call_that_api_get(api_rs, "data")
