@@ -22,9 +22,7 @@ jobs:
       fail-fast: false
       matrix:
         config:
-          - {os: windows-latest, r: 'release'}
           - {os: ubuntu-20.04, r: 'release', rspm: "https://packagemanager.rstudio.com/cran/__linux__/focal/latest"}
-          - {os: ubuntu-20.04, r: 'devel', rspm: "https://packagemanager.rstudio.com/cran/__linux__/focal/latest"}
 
     env:
       R_REMOTES_NO_ERRORS_FROM_WARNINGS: true
@@ -63,16 +61,11 @@ jobs:
             eval sudo $cmd
           done < <(Rscript -e 'writeLines(remotes::system_requirements("ubuntu", "20.04"))')
 
-      - name: Install pak and query dependencies
+      - name: Install pak and dev version of callthat
         run: |
           install.packages("pak", repos = "https://r-lib.github.io/p/pak/dev/")
-        shell: Rscript {0}
-        
-      - name: Install devel versions
-        run: |
           try(pak::pkg_install("edgararuiz/callthat"))
         shell: Rscript {0}
-
       - name: Install dependencies
         run: |
           remotes::install_deps(dependencies = TRUE)
