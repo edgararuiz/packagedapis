@@ -24,27 +24,3 @@ This package explores the mechanics of managing APIs within an R package.  The i
 ## Please clone, don't install
 
 This package is meant to be an example for those who want to develop a package to maintain their APIs.  The best way to take advantage of it is to clone the repo, and then try running the tests and checks locally.  
-
-## Package structure
-
-```{r, eval = FALSE, include = FALSE}
-fs::dir_tree()
-```
-
-The major pieces of the structure are presented in the file tree below.  To make it more concise, an explanation for each are in-line for each piece:
-
-```
-        Folder/File                                            Explanation
---------------------------   -------------------------------------------------------------------------
-├── R
-│   ├── common.R             Functions that the API actually executes. They need to be exported.
-├── inst
-│   └── plumber
-│       ├── api1               The actual plumber API.  They call functions from this package.
-└── tests
-    ├── testthat
-    │   ├── test-api1.R      Runs API in a new R session, and performs the tests against running API
-    │   └── test-common.R    Tests functions in common.R script
-```
-
-
