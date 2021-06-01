@@ -1,12 +1,15 @@
 library(callthat)
 
-api_rs <- call_that_plumber_start(
-  api_folder = system.file("plumber/api1", package = "packagedapis")
-  )
-
-resp_data <- call_that_api_get(api_rs, "data")
+api_rs <- call_that_session_start(
+  call_that_plumber_start(
+    api_folder = system.file("plumber/api1", package = "packagedapis")
+  ),
+  call_that_rsc_connection("https://colorado.rstudio.com/rsc/packagedapis/api1")
+)
 
 test_that("data endpoint works", {
+  
+  resp_data <- call_that_api_get(api_rs, "data")  
   
   # Expect status is 200
   expect_equal(
@@ -23,9 +26,9 @@ test_that("data endpoint works", {
   
 })
 
-resp_model <- call_that_api_get(api_rs, "model")
-
 test_that("model endpoint works", {
+  
+  resp_model <- call_that_api_get(api_rs, "model")
   
   # Expect status is 200
   expect_equal(
@@ -40,9 +43,9 @@ test_that("model endpoint works", {
   )  
 })
 
-resp_predict <- call_that_api_get(api_rs, "predict", list(weight = 2))
-
 test_that("predict endpoint works", {
+  
+  resp_predict <- call_that_api_get(api_rs, "predict", list(weight = 2))
   
   # Expect status is 200
   expect_equal(
@@ -57,6 +60,4 @@ test_that("predict endpoint works", {
   )
 })
 
-
-call_that_plumber_stop(api_rs)
-
+call_that_session_stop(api_rs)
